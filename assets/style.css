@@ -322,19 +322,18 @@ kbd{font:inherit;font-size:.72rem;border:1px solid var(--line);border-radius:6px
 @keyframes shake{25%{transform:translate(1px,-1px)}75%{transform:translate(-1px,1px)}}
 .hint-line b{color:var(--text)}
 
-.flood{position:fixed;left:0;right:0;bottom:0;height:0;z-index:45;pointer-events:none;opacity:0;
+.flood{position:fixed;left:0;right:0;bottom:0;height:64vh;z-index:45;pointer-events:none;visibility:hidden;transform:translate3d(0,100%,0);will-change:transform;
   background:linear-gradient(180deg,rgba(56,189,248,.34),rgba(37,99,235,.55) 55%,rgba(30,64,175,.72));
   -webkit-backdrop-filter:blur(1.4px) saturate(1.5) hue-rotate(-8deg) brightness(.92);backdrop-filter:blur(1.4px) saturate(1.5) hue-rotate(-8deg) brightness(.92)}
-.flood svg{position:absolute;left:0;top:-18px;width:200%;height:20px;fill:rgba(125,211,252,.55)}
-.flood .wave-a{animation:waveSlide 7s linear infinite}
-.flood .wave-b{top:-12px;fill:rgba(56,189,248,.45);animation:waveSlide 11s linear infinite reverse}
+.flood > svg{position:absolute;left:0;top:-18px;width:200%;height:20px;fill:rgba(125,211,252,.55)}
+.flood > .wave-a{animation:waveSlide 7s linear infinite}
+.flood > .wave-b{top:-12px;fill:rgba(56,189,248,.45);animation:waveSlide 11s linear infinite reverse}
 @keyframes waveSlide{to{transform:translateX(-50%)}}
 .flood-body{position:absolute;inset:0;overflow:hidden;background:
   radial-gradient(120px 60px at 20% 30%,rgba(255,255,255,.12),transparent 70%),
   radial-gradient(160px 70px at 70% 55%,rgba(255,255,255,.10),transparent 70%)}
 .flood-body i{position:absolute;bottom:-12px;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.5),transparent 60%);animation:rise 6s linear infinite}
 @keyframes rise{to{transform:translateY(calc(var(--h,200px) * -1));opacity:0}}
-.sunk{transform:translateY(var(--sy,12px)) rotate(var(--sr,0deg)) !important;filter:saturate(.75) hue-rotate(12deg) brightness(.9);transition:transform 1.8s cubic-bezier(.2,.8,.2,1),filter 1.2s !important}
 .alarm{position:fixed;inset:0;z-index:44;pointer-events:none;opacity:0;box-shadow:inset 0 0 140px 20px rgba(239,68,68,.55);transition:opacity .4s}
 body.emergency .alarm{opacity:1;animation:alarm 1s ease-in-out infinite alternate}
 @keyframes alarm{from{box-shadow:inset 0 0 90px 10px rgba(239,68,68,.25)}to{box-shadow:inset 0 0 170px 30px rgba(239,68,68,.65)}}
@@ -356,5 +355,18 @@ body.emergency .alarm{opacity:1;animation:alarm 1s ease-in-out infinite alternat
 @keyframes estopPulse{50%{box-shadow:0 6px 0 #6b0912,0 10px 38px rgba(239,68,68,.95)}}
 @media (prefers-reduced-motion:reduce){
   .sim.overflowing,.spill-line,.puddle,.flood .wave-a,.flood .wave-b,.flood-body i,body.emergency .alarm,.estop{animation:none!important}
-  .sunk{transition:none!important}
 }
+
+/* floating things on the water surface */
+.floaters{position:absolute;left:0;right:0;top:0;height:0}
+.drift{position:absolute;top:-34px;left:0;animation:drift linear infinite;will-change:transform}
+@keyframes drift{from{transform:translateX(-18vw)}to{transform:translateX(108vw)}}
+.bob{animation:bobY 3s ease-in-out infinite alternate;will-change:transform}
+@keyframes bobY{from{transform:translateY(-2px) rotate(-7deg)}to{transform:translateY(8px) rotate(7deg)}}
+.fl{display:block}
+.fl.chip{background:rgba(15,23,42,.88);border:1px solid rgba(125,211,252,.55);color:#e0f2fe;border-radius:999px;padding:3px 11px;font-size:.78rem;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.fl.duck{font-size:30px;line-height:1;filter:drop-shadow(0 4px 4px rgba(0,0,0,.35))}
+.fl.ring{width:36px;height:36px;filter:drop-shadow(0 3px 3px rgba(0,0,0,.4))}
+.flood-body::after{content:"";position:absolute;inset:-25%;background:repeating-radial-gradient(circle at 30% 20%,rgba(255,255,255,.08) 0 14px,transparent 14px 42px);animation:caustic 10s linear infinite alternate;mix-blend-mode:soft-light}
+@keyframes caustic{to{transform:translate(9%,7%) rotate(9deg)}}
+@media (prefers-reduced-motion:reduce){.drift,.bob,.flood-body::after{animation:none!important}}
