@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vtoxi.github.io/sitemap.xml
