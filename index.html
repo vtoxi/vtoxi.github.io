@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://vtoxi.github.io/">
 <meta name="twitter:card" content="summary">
 <script>document.documentElement.classList.add("js")</script>
-<link rel="stylesheet" href="assets/style.css?v=20261029b">
+<link rel="stylesheet" href="assets/style.css?v=20261029c">
 <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" defer></script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 <script type="application/ld+json">
@@ -235,8 +235,8 @@
     <h2>Skills</h2>
     <div class="playground" id="skills-play" role="group" aria-label="Interactive skills map. All skills are also listed below.">
       <div class="pg-legend" role="group" aria-label="Focus a category"></div>
-      <svg class="pg-svg" aria-hidden="true"></svg>
-      <p class="tl-hint">Drag the bubbles around, click a category to focus it</p>
+      <div class="pg-stage"><canvas class="pg-canvas" aria-hidden="true"></canvas><div class="pg-tip" hidden></div></div>
+      <p class="tl-hint">Poke, drag and throw the bubbles · double-click one to pop it · pick a category to focus</p>
     </div>
     <h3 class="sub">All skills</h3>
     <div class="grid">
@@ -366,6 +366,11 @@
             <g clip-path="url(#tankClip)"><g id="sim-water" transform="translate(0,120)"><path class="wave" d="M-200 8 Q-175 -2 -150 8 T-100 8 T-50 8 T0 8 T50 8 T100 8 T150 8 T200 8 T250 8 T300 8 V260 H-200z" fill="url(#wg)" opacity=".92"/></g></g>
             <line x1="30" y1="62" x2="170" y2="62" stroke="#14b8a6" stroke-dasharray="4 4" opacity=".7"/><text x="174" y="65" fill="#5eead4" font-size="9">stop</text>
             <line x1="30" y1="176" x2="170" y2="176" stroke="#f59e0b" stroke-dasharray="4 4" opacity=".7"/><text x="174" y="179" fill="#fbbf24" font-size="9">start</text>
+            <g id="sim-spill" class="spill" opacity="0" aria-hidden="true">
+              <line class="spill-line" x1="24" y1="26" x2="24" y2="236"/><line class="spill-line l2" x1="176" y1="26" x2="176" y2="236"/>
+              <path class="spill-lip" d="M30 20h140" />
+              <ellipse class="puddle" cx="100" cy="242" rx="30" ry="5"/>
+            </g>
             <text id="sim-pct" x="100" y="128" text-anchor="middle" fill="#fff" font-size="30" font-weight="700">50%</text>
           </svg>
         </div>
@@ -379,6 +384,7 @@
           <ul class="log" id="sim-log" aria-live="polite"></ul>
         </div>
       </div>
+      <p class="note hint-line">What happens if nobody stops the pump? Switch to <b>On</b> and watch. In this demo, manual On ignores the stop level.</p>
       <p class="note">A simplified model of AquaSync's logic: separate start and stop levels so the pump does not chatter, and a safety cutoff when it runs too long without filling. Thresholds here are for the demo.</p>
     </div>
     <div class="cta center">
@@ -402,9 +408,9 @@
 </main>
 
 <footer class="foot"><div class="wrap">© <span id="year">2026</span> Faisal Shafi · VTOXI · Islamabad, Pakistan</div></footer>
-<script src="assets/main.js?v=20261029b" defer></script>
-<script src="assets/skills.js?v=20261029b" defer></script>
-<script src="assets/play.js?v=20261029b" defer></script>
-<script type="module" src="assets/timeline3d.js?v=20261029b"></script>
+<script src="assets/main.js?v=20261029c" defer></script>
+<script src="assets/skills.js?v=20261029c" defer></script>
+<script src="assets/play.js?v=20261029c" defer></script>
+<script type="module" src="assets/timeline3d.js?v=20261029c"></script>
 </body>
 </html>

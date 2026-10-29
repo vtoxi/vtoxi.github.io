@@ -150,21 +150,93 @@
   if (sim) {
     var START = 30, STOP = 95, CUTOFF_S = 10;
     var level = 50, pumpOn = false, mode = 'auto', fault = false, runS = 0, lastPub = -1, logEl = $('#sim-log');
-    var water = $('#sim-water'), pct = $('#sim-pct'), led = $('#sim-led'), pumpTxt = $('#sim-pump'), dry = $('#sim-dry');
+    var water = $('#sim-water'), pct = $('#sim-pct'), led = $('#sim-led'), pumpTxt = $('#sim-pump'), dry = $('#sim-dry'), spill = $('#sim-spill');
+    var emergency = false, flooding = false, floodPx = 0, floodEls = null, panel = null;
+
     function log(topic, val, warn) {
       var li = document.createElement('li'); if (warn) li.className = 'warn';
       li.innerHTML = '<code>aquasync/' + topic + '</code> ' + val;
       logEl.insertBefore(li, logEl.firstChild);
       while (logEl.children.length > 6) logEl.removeChild(logEl.lastChild);
     }
+    function setMode(m) {
+      mode = m;
+      $$('.seg button', sim).forEach(function (x) { x.classList.toggle('on', x.dataset.mode === m); });
+    }
     function paint() {
       var y = 20 + 200 * (1 - level / 100);
       water.setAttribute('transform', 'translate(0,' + y.toFixed(1) + ')');
       pct.textContent = Math.round(level) + '%';
-      led.className = 'led ' + (fault ? 'bad' : pumpOn ? 'on' : '');
-      pumpTxt.textContent = fault ? 'FAULT' : pumpOn ? 'ON' : 'OFF';
+      led.className = 'led ' + (fault || flooding ? 'bad' : pumpOn ? 'on' : '');
+      pumpTxt.textContent = flooding ? 'OVERFLOW' : fault ? 'FAULT' : pumpOn ? 'ON' : 'OFF';
+      spill.setAttribute('opacity', flooding ? 1 : 0);
+      sim.classList.toggle('overflowing', flooding);
     }
     function setPump(v) { if (pumpOn !== v) { pumpOn = v; runS = 0; log('motor', v ? 'ON' : 'OFF'); } }
+
+    /* ---- flood: page-wide water, sinking content, emergency stop ---- */
+    function buildFlood() {
+      if (floodEls) return;
+      var f = document.createElement('div'); f.className = 'flood'; f.setAttribute('aria-hidden', 'true');
+      var wave = '<svg class="wave-a" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0 20 Q150 0 300 20 T600 20 T900 20 T1200 20 V40 H0z"/></svg>' +
+                 '<svg class="wave-b" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0 22 Q150 40 300 22 T600 22 T900 22 T1200 22 V40 H0z"/></svg>';
+      var bubbles = ''; for (var i = 0; i < 16; i++) bubbles += '<i style="left:' + (Math.random() * 100).toFixed(1) + '%;animation-delay:' + (-Math.random() * 6).toFixed(2) + 's;animation-duration:' + (4 + Math.random() * 4).toFixed(1) + 's;width:' + (4 + Math.random() * 9).toFixed(0) + 'px;height:' + (4 + Math.random() * 9).toFixed(0) + 'px"></i>';
+      f.innerHTML = wave + '<div class="flood-body">' + bubbles + '</div>';
+      var al = document.createElement('div'); al.className = 'alarm'; al.setAttribute('aria-hidden', 'true');
+      panel = document.createElement('div'); panel.className = 'estop-panel'; panel.setAttribute('role', 'alert');
+      panel.innerHTML = '<p><b>Tank overflow.</b> Water is spreading across the page.</p>' +
+        '<button type="button" class="estop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 2h7.6L22 8.2v7.6L15.8 22H8.2L2 15.8V8.2z"/><path d="M8 8l8 8M16 8l-8 8"/></svg><span>EMERGENCY STOP</span></button>';
+      document.body.appendChild(f); document.body.appendChild(al); document.body.appendChild(panel);
+      floodEls = { f: f, al: al };
+      $('.estop', panel).addEventListener('click', emergencyStop);
+    }
+    var SINK = '.card, .stats > div, .section h2, .vtoxi h2, .btn:not(.btn-small), .soc, .playground, .tl3d, .sub, .eyebrow, .lead';
+    function sinkScan() {
+      var top = innerHeight - floodPx;
+      $$(SINK).forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        var under = r.height > 0 && r.top + r.height * 0.2 > top && r.bottom > 0 && r.top < innerHeight && !el.closest('.estop-panel') && !el.closest('.palette');
+        if (under && !el.classList.contains('sunk')) {
+          if (!el.style.getPropertyValue('--sr')) {
+            el.style.setProperty('--sr', ((Math.random() - 0.5) * 7).toFixed(2) + 'deg');
+            el.style.setProperty('--sy', (10 + Math.random() * 24).toFixed(0) + 'px');
+          }
+          el.classList.add('sunk');
+        } else if (!under && el.classList.contains('sunk')) el.classList.remove('sunk');
+      });
+    }
+    function unsinkAll() { $$('.sunk').forEach(function (el) { el.classList.remove('sunk'); }); }
+    function startEmergency() {
+      emergency = true; buildFlood();
+      log('fault', 'OVERFLOW: water on the floor!', true);
+      say('Tank overflow! Press EMERGENCY STOP.');
+    }
+    function emergencyStop() {
+      setMode('off'); setPump(false); emergency = false;
+      log('motor', 'EMERGENCY STOP engaged', true);
+      say('Motor stopped. Draining the water.');
+    }
+    var lastF = performance.now();
+    function floodTick() {
+      var now = performance.now(), dt = Math.min(0.1, (now - lastF) / 1000); lastF = now;
+      var cap = innerHeight * 0.64;
+      if (flooding) floodPx = Math.min(cap, floodPx + innerHeight * (reduce ? 0.2 : 0.055) * dt);
+      else if (floodPx > 0) floodPx = Math.max(0, floodPx - innerHeight * 0.22 * dt);
+      if (floodEls) {
+        floodEls.f.style.setProperty('--h', floodPx.toFixed(1) + 'px');
+        floodEls.f.style.height = floodPx.toFixed(1) + 'px';
+        floodEls.f.style.opacity = floodPx > 1 ? 1 : 0;
+        var on = floodPx > 1;
+        document.body.classList.toggle('flooded', on);
+        document.body.classList.toggle('emergency', emergency || flooding);
+        panel.classList.toggle('show', emergency || (flooding && on));
+        if (on || document.querySelector('.sunk')) sinkScan();
+        if (!on && !emergency) unsinkAll();
+      }
+      if (!flooding && emergency && floodPx <= 1) emergency = false;
+    }
+    setInterval(floodTick, 80);
+
     setInterval(function () {
       var dt = 0.25;
       if (!fault) {
@@ -176,13 +248,15 @@
         runS += dt;
         if (runS > CUTOFF_S && level < STOP && mode === 'auto') { fault = true; setPump(false); log('fault', 'dry_run cutoff, manual reset needed', true); }
       }
-      level = Math.max(0, level - 0.04);
+      flooding = pumpOn && level >= 99.9;
+      if (flooding && !emergency) startEmergency();
+      level = Math.max(0, level - (flooding ? 0 : 0.04));
       var r = Math.round(level / 5) * 5;
       if (r !== lastPub) { lastPub = r; log('level', r + '%'); }
       paint();
     }, 250);
     $$('.seg button', sim).forEach(function (b) {
-      b.addEventListener('click', function () { mode = b.dataset.mode; $$('.seg button', sim).forEach(function (x) { x.classList.toggle('on', x === b); }); log('mode', mode); });
+      b.addEventListener('click', function () { setMode(b.dataset.mode); log('mode', mode); });
     });
     $('#sim-use').addEventListener('click', function () { level = Math.max(0, level - 15); });
     $('#sim-reset').addEventListener('click', function () { if (fault) { fault = false; runS = 0; log('fault', 'cleared'); } });
