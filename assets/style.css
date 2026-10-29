@@ -370,3 +370,15 @@ body.emergency .alarm{opacity:1;animation:alarm 1s ease-in-out infinite alternat
 .flood-body::after{content:"";position:absolute;inset:-25%;background:repeating-radial-gradient(circle at 30% 20%,rgba(255,255,255,.08) 0 14px,transparent 14px 42px);animation:caustic 10s linear infinite alternate;mix-blend-mode:soft-light}
 @keyframes caustic{to{transform:translate(9%,7%) rotate(9deg)}}
 @media (prefers-reduced-motion:reduce){.drift,.bob,.flood-body::after{animation:none!important}}
+
+/* analytics consent */
+.consent{position:fixed;left:16px;bottom:16px;z-index:96;max-width:min(420px,calc(100vw - 32px));background:rgba(12,18,40,.97);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 18px 50px rgba(0,0,0,.55);transform:translateY(24px);opacity:0;transition:transform .4s cubic-bezier(.2,.9,.3,1),opacity .4s}
+.consent.show{transform:none;opacity:1}
+.consent[hidden]{display:none}
+.consent p{margin:0 0 10px;font-size:.88rem;color:var(--muted);line-height:1.5}
+.consent p b{color:var(--text)}
+.consent-btns{display:flex;gap:8px}
+.linkbtn{background:none;border:0;color:var(--muted);font:inherit;text-decoration:underline;cursor:pointer;padding:0}
+.linkbtn:hover{color:var(--text)}
+@media (max-width:560px){.consent{left:8px;right:8px;bottom:8px;max-width:none}}
+body.emergency .consent{display:none}

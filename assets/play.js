@@ -253,11 +253,13 @@
 
     function startEmergency() {
       emergency = true; buildFlood(); kick();
+      window.dispatchEvent(new CustomEvent('pf:event', { detail: { name: 'sim_overflow' } }));
       log('fault', 'OVERFLOW: water on the floor!', true);
       say('Tank overflow! Press EMERGENCY STOP.');
     }
     function emergencyStop() {
       setMode('off'); setPump(false); emergency = false;
+      window.dispatchEvent(new CustomEvent('pf:event', { detail: { name: 'sim_emergency_stop' } }));
       log('motor', 'EMERGENCY STOP engaged', true);
       say('Motor stopped. Draining the water.');
     }
