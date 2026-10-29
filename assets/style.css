@@ -382,3 +382,45 @@ body.emergency .alarm{opacity:1;animation:alarm 1s ease-in-out infinite alternat
 .linkbtn:hover{color:var(--text)}
 @media (max-width:560px){.consent{left:8px;right:8px;bottom:8px;max-width:none}}
 body.emergency .consent{display:none}
+
+/* ---------- case studies ---------- */
+.cases{display:grid;gap:14px}
+.case{padding:0;overflow:hidden}
+.case-head{width:100%;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:16px;text-align:left;background:none;border:0;color:inherit;font:inherit;padding:18px 22px;cursor:pointer}
+.case-head:hover .chev{color:var(--accent2)}
+.case-head .ibox{margin:0}
+.case-title b{display:block;font-size:1.05rem}
+.case-title small{color:var(--muted);font-size:.88rem}
+.case-metric{font-size:.8rem;font-weight:600;color:#5eead4;background:rgba(20,184,166,.12);border:1px solid rgba(20,184,166,.3);border-radius:999px;padding:4px 12px;white-space:nowrap}
+.chev{width:22px;height:22px;color:var(--muted);transition:transform .35s}
+.case.open .chev{transform:rotate(180deg)}
+.case-panel{display:grid;grid-template-rows:1fr;transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1)}
+.js .case-panel{grid-template-rows:0fr}
+.js .case.open .case-panel{grid-template-rows:1fr}
+.case-inner{overflow:hidden;min-height:0;padding:0 22px}
+.case-inner::after{content:"";display:block;height:22px}
+.case-inner h4{margin:1rem 0 .3rem;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2)}
+.case-inner p,.case-inner ul{margin:0 0 .4rem;color:#cdd6f4}
+.case-inner ul{padding-left:1.2rem}
+.case-tags{margin-top:.2rem!important}
+.outcome{color:#fff!important;font-weight:600}
+@media (max-width:760px){.case-head{grid-template-columns:auto 1fr auto}.case-metric{display:none}}
+
+/* ---------- contact form ---------- */
+.contact-form{max-width:640px;margin:2rem auto 0;text-align:left;display:grid;gap:14px}
+.contact-form label{display:grid;gap:6px;font-size:.88rem;color:var(--muted)}
+.contact-form input,.contact-form select,.contact-form textarea{width:100%;background:#0a0f22;border:1px solid var(--line);border-radius:12px;color:var(--text);font:inherit;padding:11px 14px;transition:border-color .15s,box-shadow .15s}
+.contact-form textarea{resize:vertical;min-height:120px}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 30%,transparent)}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.cf-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.cf-status{margin:0;font-size:.9rem;color:var(--muted)}
+.cf-status.ok{color:#4ade80}.cf-status.err{color:#fca5a5}
+.cf-status a{color:#fff;text-decoration:underline}
+.cf-note{margin:0;font-size:.78rem;color:var(--muted)}
+.contact-form.sending .btn{opacity:.7}
+.contact-form.sent{border-color:#22c55e;box-shadow:0 0 0 1px #22c55e,0 0 30px rgba(34,197,94,.2)}
+.contact-form .btn:disabled{cursor:wait}
+@media (max-width:600px){.cf-row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.case-panel{transition:none}.chev{transition:none}}

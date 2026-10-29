@@ -26,7 +26,8 @@
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a) return;
     var href = a.getAttribute('href') || '';
-    if (href.indexOf('mailto:') === 0) track('contact_click', { link_text: (a.textContent || '').trim().slice(0, 40) });
+    if (/Resume\.pdf$/i.test(href)) track('resume_download');
+    else if (href.indexOf('mailto:') === 0) track('contact_click', { link_text: (a.textContent || '').trim().slice(0, 40) });
     else if (href.indexOf('buymeacoffee') > -1) track('coffee_click');
     else if (/^https?:/.test(href) && a.hostname !== location.hostname) track('outbound_click', { link_url: href });
   });

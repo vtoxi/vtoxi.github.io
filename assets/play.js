@@ -101,11 +101,13 @@
   var cmds = [
     { t: 'Go to About', k: 'section', run: function () { go('#about'); } },
     { t: 'Go to Experience', k: 'section', run: function () { go('#experience'); } },
+    { t: 'Go to Case studies', k: 'section', run: function () { go('#work'); } },
     { t: 'Go to Skills', k: 'section', run: function () { go('#skills'); } },
     { t: 'Go to VTOXI', k: 'section', run: function () { go('#vtoxi'); } },
     { t: 'Go to IoT lab', k: 'section', run: function () { go('#iot'); } },
     { t: 'Go to Contact', k: 'section', run: function () { go('#contact'); } },
     { t: 'Hire me (send an email)', k: 'action', run: function () { location.href = 'mailto:faisalshafi69@gmail.com?subject=Project%20inquiry%20from%20your%20portfolio'; } },
+    { t: 'Download resume (PDF)', k: 'action', run: function () { var a = document.createElement('a'); a.href = 'assets/Faisal-Shafi-Resume.pdf'; a.download = ''; document.body.appendChild(a); a.click(); a.remove(); } },
     { t: 'Open GitHub profile', k: 'link', run: function () { open('https://github.com/vtoxi', '_blank', 'noopener'); } },
     { t: 'Open LinkedIn', k: 'link', run: function () { open('https://linkedin.com/in/faisalshafi11', '_blank', 'noopener'); } },
     { t: 'Buy me a coffee', k: 'link', run: function () { open('https://buymeacoffee.com/faisalshafi', '_blank', 'noopener'); } },
