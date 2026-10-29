@@ -14,12 +14,49 @@
 <meta property="og:description" content="10+ years designing enterprise .NET, Angular and Azure platforms. Founder of VTOXI.">
 <meta property="og:url" content="https://vtoxi.github.io/">
 <meta name="twitter:card" content="summary">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" defer></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Faisal Shafi","jobTitle":"Solution Architect","url":"https://vtoxi.github.io/","email":"mailto:faisalshafi69@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Islamabad","addressCountry":"PK"},"alumniOf":"National University of Modern Languages","sameAs":["https://github.com/vtoxi","https://linkedin.com/in/faisalshafi11","https://stackoverflow.com/users/2731312","https://vtoxi.com"],"knowsAbout":[".NET","Angular","Azure","Microservices","IoT"]}
 </script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="i-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+<symbol id="i-cloud" viewBox="0 0 24 24"><path d="M18 18a4 4 0 0 0 0-8 6 6 0 0 0-11.6 1.5A4.5 4.5 0 0 0 7 18z"/></symbol>
+<symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-car" viewBox="0 0 24 24"><path d="M5 16l1.5-5a2 2 0 0 1 1.9-1.4h7.2A2 2 0 0 1 17.5 11L19 16"/><rect x="3" y="16" width="18" height="4" rx="1.5"/><path d="M7 18h.01M17 18h.01"/></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3.5 3.5 0 0 0 6 0zM19 7l-3 7a3.5 3.5 0 0 0 6 0z"/></symbol>
+<symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+<symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></symbol>
+<symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+<symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/></symbol>
+<symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L8 21l4-2 4 2-1-6.5"/></symbol>
+<symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5a5 5 0 0 1 4.5 5"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
+<symbol id="i-coffee" viewBox="0 0 24 24"><path d="M5 8h12v6a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"/><path d="M17 9h2a2.5 2.5 0 0 1 0 5h-2M8 3v2M11 3v2M14 3v2"/></symbol>
+<symbol id="i-printer" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="4" rx="1"/><path d="M6 7v4M18 7v4M3 11h18"/><rect x="8" y="14" width="8" height="7" rx="1"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="i-git" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M6 8.2v7.6M18 11.2c0 4-6 3-11 5.6"/></symbol>
+<symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h7"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><rect x="2" y="6" width="12" height="10" rx="1"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.5-4.5"/></symbol>
+<symbol id="i-in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-7M12 13a3 3 0 0 1 6 0v4"/></symbol>
+</defs>
+</svg>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="top">
@@ -30,7 +67,10 @@
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#vtoxi">VTOXI</a>
+      <a href="#iot">IoT</a>
       <a href="#contact" class="btn btn-small">Hire me</a>
+      <button class="kbd-btn" id="open-palette" type="button" aria-label="Open command menu"><svg class="ico mini" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-search"/></svg><span>Search</span><kbd>Ctrl K</kbd></button>
+      <div class="swatches" role="group" aria-label="Accent color"><button type="button" data-accent="indigo" class="on" aria-label="Indigo and teal"></button><button type="button" data-accent="sunset" aria-label="Orange and pink"></button><button type="button" data-accent="emerald" aria-label="Green and cyan"></button></div>
     </nav>
   </div>
 </header>
@@ -39,22 +79,36 @@
 
 <section class="hero">
   <div class="wrap hero-in">
+    <div class="hero-grid">
+    <div class="hero-text">
     <p class="eyebrow">Islamabad, Pakistan · Working with teams in the USA, Europe and the Middle East</p>
     <h1>Hi, I'm Faisal.<br><span class="grad">I design and ship enterprise software.</span></h1>
     <p class="lead">Solution Architect and technical leader with <strong><span data-years>10</span>+ years</strong> modernizing platforms on <strong>.NET, Angular and Azure</strong>. I lead engineers, make the hard architecture calls, and turn business goals into systems that scale.</p>
+    <p class="typed-line" aria-hidden="true">Right now I'm into <span id="typed">enterprise .NET architecture</span><span class="caret"></span></p>
     <div class="cta">
       <a class="btn" href="mailto:faisalshafi69@gmail.com?subject=Project%20inquiry%20from%20your%20portfolio">Hire me</a>
       <a class="btn btn-ghost" href="#vtoxi">See VTOXI, my studio</a>
-      <a class="btn btn-ghost" href="https://github.com/vtoxi" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://github.com/vtoxi" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+    </div>
+    <div class="avatar" aria-hidden="false">
+      <div class="ring"></div>
+      <img src="https://avatars.githubusercontent.com/vtoxi?s=480" alt="Portrait of Faisal Shafi" width="240" height="240" onerror="this.parentNode.style.display='none'">
+      <span class="float f1"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-code"/></svg> .NET</span>
+      <span class="float f2"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-cloud"/></svg> Azure</span>
+      <span class="float f3"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-chip"/></svg> IoT</span>
+    </div>
     </div>
     <dl class="stats">
-      <div><dt><span data-years>10</span>+</dt><dd>years in software</dd></div>
-      <div><dt>20</dt><dd>engineers led</dd></div>
-      <div><dt>1.3M</dt><dd>users served</dd></div>
-      <div><dt>5+</dt><dd>enterprise platforms modernized</dd></div>
+      <div><svg class="ico stat-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-clock"/></svg><dt><span data-years>10</span>+</dt><dd>years in software</dd></div>
+      <div><svg class="ico stat-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-users"/></svg><dt>20</dt><dd>engineers led</dd></div>
+      <div><svg class="ico stat-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-globe"/></svg><dt>1.3M</dt><dd>users served</dd></div>
+      <div><svg class="ico stat-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-layers"/></svg><dt>5+</dt><dd>enterprise platforms modernized</dd></div>
     </dl>
   </div>
 </section>
+
+<div class="marquee" aria-label="Technologies I work with"><div class="track"><span class="logo"><img src="https://cdn.simpleicons.org/dotnet/8b6cf0" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">.NET</span><span class="logo"><img src="https://cdn.simpleicons.org/angular/ff3b57" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Angular</span><span class="logo"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">TypeScript</span><span class="logo"><svg class="ico logo-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-cloud"/></svg>Azure</span><span class="logo"><svg class="ico logo-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-db"/></svg>SQL Server</span><span class="logo"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Docker</span><span class="logo"><img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Kubernetes</span><span class="logo"><img src="https://cdn.simpleicons.org/git/F05032" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Git</span><span class="logo"><img src="https://cdn.simpleicons.org/raspberrypi/e5456b" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Raspberry Pi</span><span class="logo"><img src="https://cdn.simpleicons.org/arduino/00b3b3" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Arduino</span><span class="logo"><img src="https://cdn.simpleicons.org/espressif/E7352C" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">ESP32</span><span class="logo"><img src="https://cdn.simpleicons.org/mqtt/c084fc" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">MQTT</span><span class="logo"><img src="https://cdn.simpleicons.org/openhab/E64A19" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">openHAB</span><span class="logo"><img src="https://cdn.simpleicons.org/python/4b8bbe" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Python</span></div><div class="track" aria-hidden="true"><span class="logo"><img src="https://cdn.simpleicons.org/dotnet/8b6cf0" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">.NET</span><span class="logo"><img src="https://cdn.simpleicons.org/angular/ff3b57" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Angular</span><span class="logo"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">TypeScript</span><span class="logo"><svg class="ico logo-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-cloud"/></svg>Azure</span><span class="logo"><svg class="ico logo-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-db"/></svg>SQL Server</span><span class="logo"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Docker</span><span class="logo"><img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Kubernetes</span><span class="logo"><img src="https://cdn.simpleicons.org/git/F05032" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Git</span><span class="logo"><img src="https://cdn.simpleicons.org/raspberrypi/e5456b" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Raspberry Pi</span><span class="logo"><img src="https://cdn.simpleicons.org/arduino/00b3b3" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Arduino</span><span class="logo"><img src="https://cdn.simpleicons.org/espressif/E7352C" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">ESP32</span><span class="logo"><img src="https://cdn.simpleicons.org/mqtt/c084fc" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">MQTT</span><span class="logo"><img src="https://cdn.simpleicons.org/openhab/E64A19" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">openHAB</span><span class="logo"><img src="https://cdn.simpleicons.org/python/4b8bbe" alt="" width="22" height="22" loading="lazy" onerror="this.remove()">Python</span></div></div>
 
 <section id="about" class="section">
   <div class="wrap two">
@@ -67,11 +121,11 @@
     <aside class="card facts" aria-label="Quick facts">
       <h3>At a glance</h3>
       <ul>
-        <li><span>Role</span> Senior Software Engineer / Solution Architecture</li>
-        <li><span>Currently</span> Sideline Technologies (Netherlands), remote</li>
-        <li><span>Education</span> BS Computer Science, NUML (2011 to 2015)</li>
-        <li><span>Based in</span> Islamabad, Pakistan</li>
-        <li><span>Open to</span> Architecture, technical leadership and product engagements</li>
+        <li><span><svg class="ico mini" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-briefcase"/></svg>Role</span> Senior Software Engineer / Solution Architecture</li>
+        <li><span><svg class="ico mini" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-building"/></svg>Currently</span> Sideline Technologies (Netherlands), remote</li>
+        <li><span><svg class="ico mini" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-cap"/></svg>Education</span> BS Computer Science, NUML (2011 to 2015)</li>
+        <li><span><svg class="ico mini" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-pin"/></svg>Based in</span> Islamabad, Pakistan</li>
+        <li><span><svg class="ico mini" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-zap"/></svg>Open to</span> Architecture, technical leadership and product engagements</li>
       </ul>
     </aside>
   </div>
@@ -80,10 +134,25 @@
 <section id="experience" class="section alt">
   <div class="wrap">
     <h2>Experience</h2>
+    <div class="tl3d" id="tl3d" role="img" aria-label="Interactive 3D timeline of my roles from 2015 to today. Two periods overlap: the Ministry of Justice contract ran alongside my Senior Development Consultant role from October 2023 to February 2024, and my Sideline Technologies role began in February 2025 while the Principal Consultant role ended in March 2025.">
+      <canvas></canvas>
+      <div class="tl-controls" role="group" aria-label="Timeline view"><button type="button" data-view="angled" class="on">Angled</button><button type="button" data-view="front">Front</button><button type="button" data-view="top">Top</button><button type="button" data-view="replay">Replay</button></div>
+      <div class="tl-labels" aria-hidden="true"></div>
+      <div class="tl-tip" hidden></div>
+      <div class="tl-detail" hidden></div>
+      <p class="tl-fallback">Your browser could not start the 3D view. The full timeline is listed below.</p>
+    </div>
+    <ul class="tl-legend">
+      <li><i class="sw sw-overlap"></i> Glowing slab = roles that ran at the same time</li>
+      <li>Drag to rotate the scene, hover or click a bar for details</li>
+      <li>Roles dated by year only are drawn approximately</li>
+    </ul>
+
     <ol class="timeline">
 
       <li class="card">
         <div class="when">Feb 2025 to present</div>
+        <span class="badge">Overlaps Principal Consultant in Feb to Mar 2025</span>
         <h3>Senior Software Engineer / Solution Architecture</h3>
         <p class="org">Sideline Technologies (Netherlands) · Remote</p>
         <ul>
@@ -95,6 +164,7 @@
 
       <li class="card">
         <div class="when">Mar 2024 to Mar 2025</div>
+        <span class="badge">Overlaps Sideline in Feb to Mar 2025</span>
         <h3>Principal Consultant</h3>
         <p class="org">Systems Limited, for Associated Press (USA)</p>
         <ul>
@@ -106,23 +176,25 @@
       </li>
 
       <li class="card">
+        <div class="when">Oct 2023 to Feb 2024</div>
+        <span class="badge">Ran alongside Senior Development Consultant (5 months)</span>
+        <h3>Full Stack Engineer (Contract)</h3>
+        <p class="org">Ministry of Justice, Saudi Arabia</p>
+        <ul>
+          <li>Contributed to a national real estate digitization initiative.</li>
+          <li>Cut processing time by <strong>15%</strong> and improved scalability by <strong>20%</strong> by redesigning the REST API architecture.</li>
+        </ul>
+      </li>
+
+      <li class="card">
         <div class="when">Sep 2022 to Mar 2024</div>
+        <span class="badge">Overlapped by the Ministry of Justice contract</span>
         <h3>Senior Development Consultant</h3>
         <p class="org">Systems Limited, for Associated Press (USA)</p>
         <ul>
           <li>Built scalable enterprise APIs and Angular applications for high-volume operations.</li>
           <li>Improved reliability, security and maintainability, and supported Azure deployments and DevOps automation.</li>
           <li>Estimated effort, complexity and timelines with architects and stakeholders.</li>
-        </ul>
-      </li>
-
-      <li class="card">
-        <div class="when">Oct 2023 to Feb 2024</div>
-        <h3>Full Stack Engineer (Contract)</h3>
-        <p class="org">Ministry of Justice, Saudi Arabia</p>
-        <ul>
-          <li>Contributed to a national real estate digitization initiative.</li>
-          <li>Cut processing time by <strong>15%</strong> and improved scalability by <strong>20%</strong> by redesigning the REST API architecture.</li>
         </ul>
       </li>
 
@@ -161,13 +233,19 @@
 <section id="skills" class="section">
   <div class="wrap">
     <h2>Skills</h2>
+    <div class="playground" id="skills-play" role="group" aria-label="Interactive skills map. All skills are also listed below.">
+      <div class="pg-legend" role="group" aria-label="Focus a category"></div>
+      <svg class="pg-svg" aria-hidden="true"></svg>
+      <p class="tl-hint">Drag the bubbles around, click a category to focus it</p>
+    </div>
+    <h3 class="sub">All skills</h3>
     <div class="grid">
-      <div class="card"><h3>Engineering leadership</h3><p class="chips"><span>Technical leadership</span><span>Mentoring</span><span>Hiring &amp; interviews</span><span>Performance reviews</span><span>Stakeholder management</span><span>Delivery ownership</span></p></div>
-      <div class="card"><h3>Architecture</h3><p class="chips"><span>Solution architecture</span><span>Microservices</span><span>Distributed systems</span><span>Clean Architecture</span><span>API design</span><span>Cloud migration</span><span>Performance</span></p></div>
-      <div class="card"><h3>Cloud &amp; DevOps</h3><p class="chips"><span>Azure</span><span>AKS</span><span>App Service</span><span>Service Bus</span><span>Event Grid</span><span>Key Vault</span><span>Application Insights</span><span>Azure DevOps</span><span>Bicep / ARM</span><span>Docker</span></p></div>
-      <div class="card"><h3>Backend</h3><p class="chips"><span>C#</span><span>.NET</span><span>ASP.NET Core</span><span>Web API</span><span>EF Core</span><span>SignalR</span><span>Azure Functions</span></p></div>
-      <div class="card"><h3>Frontend</h3><p class="chips"><span>Angular</span><span>TypeScript</span><span>JavaScript</span><span>HTML5 / CSS3</span><span>Blazor</span><span>Razor Pages</span></p></div>
-      <div class="card"><h3>Data &amp; process</h3><p class="chips"><span>SQL Server</span><span>Azure SQL</span><span>Oracle</span><span>Git</span><span>YAML pipelines</span><span>Agile</span><span>Secure SDLC</span></p></div>
+      <div class="card"><h3><svg class="ico title-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-users"/></svg>Engineering leadership</h3><p class="chips"><span>Technical leadership</span><span>Mentoring</span><span>Hiring &amp; interviews</span><span>Performance reviews</span><span>Stakeholder management</span><span>Delivery ownership</span></p></div>
+      <div class="card"><h3><svg class="ico title-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-layers"/></svg>Architecture</h3><p class="chips"><span>Solution architecture</span><span>Microservices</span><span>Distributed systems</span><span>Clean Architecture</span><span>API design</span><span>Cloud migration</span><span>Performance</span></p></div>
+      <div class="card"><h3><svg class="ico title-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-cloud"/></svg>Cloud &amp; DevOps</h3><p class="chips"><span>Azure</span><span>AKS</span><span>App Service</span><span>Service Bus</span><span>Event Grid</span><span>Key Vault</span><span>Application Insights</span><span>Azure DevOps</span><span>Bicep / ARM</span><span class="wl"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="" width="14" height="14" loading="lazy" onerror="this.remove()">Docker</span><span class="wl"><img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="" width="14" height="14" loading="lazy" onerror="this.remove()">Kubernetes</span></p></div>
+      <div class="card"><h3><svg class="ico title-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-code"/></svg>Backend</h3><p class="chips"><span class="wl"><img src="https://cdn.simpleicons.org/dotnet/8b6cf0" alt="" width="14" height="14" loading="lazy" onerror="this.remove()">.NET</span><span>C#</span><span>ASP.NET Core</span><span>Web API</span><span>EF Core</span><span>SignalR</span><span>Azure Functions</span></p></div>
+      <div class="card"><h3><svg class="ico title-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-globe"/></svg>Frontend</h3><p class="chips"><span class="wl"><img src="https://cdn.simpleicons.org/angular/ff3b57" alt="" width="14" height="14" loading="lazy" onerror="this.remove()">Angular</span><span class="wl"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="" width="14" height="14" loading="lazy" onerror="this.remove()">TypeScript</span><span class="wl"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="" width="14" height="14" loading="lazy" onerror="this.remove()">JavaScript</span><span class="wl"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="" width="14" height="14" loading="lazy" onerror="this.remove()">HTML5</span><span class="wl"><img src="https://cdn.simpleicons.org/css/1572B6" alt="" width="14" height="14" loading="lazy" onerror="this.remove()">CSS3</span><span class="wl"><img src="https://cdn.simpleicons.org/blazor/8b6cf0" alt="" width="14" height="14" loading="lazy" onerror="this.remove()">Blazor</span><span>Razor Pages</span></p></div>
+      <div class="card"><h3><svg class="ico title-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-db"/></svg>Data &amp; process</h3><p class="chips"><span>SQL Server</span><span>Azure SQL</span><span>Oracle</span><span class="wl"><img src="https://cdn.simpleicons.org/git/F05032" alt="" width="14" height="14" loading="lazy" onerror="this.remove()">Git</span><span>YAML pipelines</span><span>Agile</span><span>Secure SDLC</span></p></div>
     </div>
   </div>
 </section>
@@ -176,17 +254,17 @@
   <div class="wrap">
     <h2>Selected enterprise projects</h2>
     <div class="grid projects">
-      <div class="card"><h3>Associated Press</h3><p>Secure enterprise platforms</p></div>
-      <div class="card"><h3>Ministry of Justice</h3><p>Real estate digitization</p></div>
-      <div class="card"><h3>Gyldendal</h3><p>Digital publishing platform</p></div>
-      <div class="card"><h3>Vikarland</h3><p>Job matching platform</p></div>
-      <div class="card"><h3>Fair Car Rent</h3><p>Rental platform</p></div>
-      <div class="card"><h3>Cubivue</h3><p>Courier management system</p></div>
-      <div class="card"><h3>Government HRMS</h3><p>HR and supply chain automation</p></div>
+      <div class="card"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-globe"/></svg></span><h3>Associated Press</h3><p>Secure enterprise platforms</p></div>
+      <div class="card"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-building"/></svg></span><h3>Ministry of Justice</h3><p>Real estate digitization</p></div>
+      <div class="card"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-book"/></svg></span><h3>Gyldendal</h3><p>Digital publishing platform</p></div>
+      <div class="card"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-search"/></svg></span><h3>Vikarland</h3><p>Job matching platform</p></div>
+      <div class="card"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-car"/></svg></span><h3>Fair Car Rent</h3><p>Rental platform</p></div>
+      <div class="card"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-truck"/></svg></span><h3>Cubivue</h3><p>Courier management system</p></div>
+      <div class="card"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-users"/></svg></span><h3>Government HRMS</h3><p>HR and supply chain automation</p></div>
     </div>
     <div class="two small-gap">
-      <div class="card"><h3>Awards</h3><ul class="plain"><li>Winner, Cloud Olympiad 2015</li><li>Champion, MUST Olympiad 2015</li><li>National recognition for a database-driven examination and attendance system</li></ul></div>
-      <div class="card"><h3>Education</h3><p><strong>BS Computer Science</strong><br>National University of Modern Languages (NUML)<br>2011 to 2015</p></div>
+      <div class="card"><h3><svg class="ico title-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-award"/></svg>Awards</h3><ul class="plain"><li>Winner, Cloud Olympiad 2015</li><li>Champion, MUST Olympiad 2015</li><li>National recognition for a database-driven examination and attendance system</li></ul></div>
+      <div class="card"><h3><svg class="ico title-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-cap"/></svg>Education</h3><p><strong>BS Computer Science</strong><br>National University of Modern Languages (NUML)<br>2011 to 2015</p></div>
     </div>
   </div>
 </section>
@@ -198,25 +276,113 @@
     <p class="lead">A small product and engineering studio. I build software, cloud systems and connected devices for clients, and ship my own tools in the open.</p>
 
     <div class="grid services">
-      <div class="card"><h3>Custom software</h3><p>Web apps, APIs and dashboards on .NET and Angular, built for the long term.</p></div>
-      <div class="card"><h3>Cloud &amp; architecture</h3><p>Azure design, migration and CI/CD, plus architecture reviews for existing systems.</p></div>
-      <div class="card"><h3>IoT &amp; hardware</h3><p>ESP32, Raspberry Pi and Arduino projects, from sensors to full device platforms.</p></div>
-      <div class="card"><h3>Tools &amp; automation</h3><p>Browser extensions and workflow automation that remove repetitive work.</p></div>
+      <div class="card"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-code"/></svg></span><h3>Custom software</h3><p>Web apps, APIs and dashboards on .NET and Angular, built for the long term.</p></div>
+      <div class="card"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-cloud"/></svg></span><h3>Cloud &amp; architecture</h3><p>Azure design, migration and CI/CD, plus architecture reviews for existing systems.</p></div>
+      <div class="card"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-chip"/></svg></span><h3>IoT &amp; hardware</h3><p>ESP32, Raspberry Pi and Arduino projects, from sensors to full device platforms.</p></div>
+      <div class="card"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-zap"/></svg></span><h3>Tools &amp; automation</h3><p>Browser extensions and workflow automation that remove repetitive work.</p></div>
     </div>
 
     <h3 class="sub">Open-source products</h3>
+    <div class="filters" role="group" aria-label="Filter products"><button type="button" class="on" data-f="all">All</button><button type="button" data-f="ext">Extensions</button><button type="button" data-f="iot">IoT</button><button type="button" data-f="web">Web</button></div>
     <div class="grid products">
-      <a class="card link" href="https://github.com/vtoxi/swagger-helper-chrome-extension" rel="noopener"><h4>Swagger Helper</h4><p>Auto-detects Swagger UI and adds auto-login, token injection, environment switching and copy-as-cURL.</p><span class="tag">Chrome extension</span></a>
-      <a class="card link" href="https://github.com/vtoxi/layout-map" rel="noopener"><h4>layout-map</h4><p>Floor-plan CAD editor with a 3D walkthrough and openHAB smart-home sync, deployable on a Raspberry Pi.</p><span class="tag">Web · IoT</span></a>
-      <a class="card link" href="https://github.com/vtoxi/Smart-Water-Level-Monitor" rel="noopener"><h4>Smart Water Level Monitor</h4><p>ESP32 monitoring with single or dual tank modes, MQTT, BLE and automatic pump control.</p><span class="tag">ESP32</span></a>
-      <a class="card link" href="https://github.com/vtoxi/esp32-cam-dashcam" rel="noopener"><h4>CarSentinel</h4><p>Distributed ESP32 vehicle dashcam, security and telemetry platform.</p><span class="tag">ESP32</span></a>
-      <a class="card link" href="https://github.com/vtoxi/EtsyHunt" rel="noopener"><h4>EtsyHunt</h4><p>Free Etsy niche research: keywords, snapshots, audits and scored reports.</p><span class="tag">Chrome extension</span></a>
-      <a class="card link" href="https://github.com/vtoxi/amazonhunt-browser-extension" rel="noopener"><h4>AmazonHunt</h4><p>Amazon niche research with listing audits and GO/NO-GO scoring.</p><span class="tag">Chrome extension</span></a>
+      <a class="card link" data-cat="ext" href="https://github.com/vtoxi/swagger-helper-chrome-extension" target="_blank" rel="noopener noreferrer"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-code"/></svg></span><h4>Swagger Helper</h4><p>Auto-detects Swagger UI and adds auto-login, token injection, environment switching and copy-as-cURL.</p><span class="tag">Chrome extension</span></a>
+      <a class="card link" data-cat="web iot" href="https://github.com/vtoxi/layout-map" target="_blank" rel="noopener noreferrer"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-map"/></svg></span><h4>layout-map</h4><p>Floor-plan CAD editor with a 3D walkthrough and openHAB smart-home sync, deployable on a Raspberry Pi.</p><span class="tag">Web · IoT</span></a>
+      <a class="card link" data-cat="iot" href="https://github.com/vtoxi/Smart-Water-Level-Monitor" target="_blank" rel="noopener noreferrer"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-drop"/></svg></span><h4>Smart Water Level Monitor</h4><p>ESP32 monitoring with single or dual tank modes, MQTT, BLE and automatic pump control.</p><span class="tag">ESP32</span></a>
+      <a class="card link" data-cat="iot" href="https://github.com/vtoxi/esp32-cam-dashcam" target="_blank" rel="noopener noreferrer"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-camera"/></svg></span><h4>CarSentinel</h4><p>Distributed ESP32 vehicle dashcam, security and telemetry platform.</p><span class="tag">ESP32</span></a>
+      <a class="card link" data-cat="ext" href="https://github.com/vtoxi/EtsyHunt" target="_blank" rel="noopener noreferrer"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-search"/></svg></span><h4>EtsyHunt</h4><p>Free Etsy niche research: keywords, snapshots, audits and scored reports.</p><span class="tag">Chrome extension</span></a>
+      <a class="card link" data-cat="ext" href="https://github.com/vtoxi/amazonhunt-browser-extension" target="_blank" rel="noopener noreferrer"><span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-search"/></svg></span><h4>AmazonHunt</h4><p>Amazon niche research with listing audits and GO/NO-GO scoring.</p><span class="tag">Chrome extension</span></a>
+    </div>
+
+
+    <h3 class="sub">Ventures</h3>
+    <div class="grid ventures">
+      <div class="card venture">
+        <span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-car"/></svg></span><span class="tag">Auto parts · Pakistan</span>
+        <h4>PakDenso</h4>
+        <p>Official reseller of Denso auto parts in Pakistan, with its own online store at pakdenso.com. I build and run the website and its search visibility.</p>
+      </div>
+      <div class="card venture">
+        <span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-scale"/></svg></span><span class="tag">AI · Legal tech · In development</span>
+        <h4>Legal AI for law firms</h4>
+        <p>An AI assistant that helps lawyers research statutes and judgments and draft faster, built with an experienced lawyer. Starting in Pakistan, then the Gulf.</p>
+      </div>
     </div>
 
     <div class="cta center">
       <a class="btn" href="mailto:faisalshafi69@gmail.com?subject=VTOXI%20project%20inquiry">Start a project with VTOXI</a>
-      <a class="btn btn-ghost" href="https://vtoxi.com" rel="noopener">vtoxi.com</a>
+      <a class="btn btn-ghost" href="https://vtoxi.com" target="_blank" rel="noopener noreferrer">vtoxi.com</a>
+    </div>
+  </div>
+</section>
+
+
+<section id="iot" class="section iot">
+  <div class="wrap">
+    <p class="eyebrow">Hobby that became a lab</p>
+    <h2>IoT &amp; hardware</h2>
+    <p class="lead">I build connected devices end to end: firmware, circuits, cloud links and the apps that control them. Raspberry Pi, ESP32 and Arduino are my daily tools.</p>
+    <p class="chips big"><span>ESP32</span><span>Raspberry Pi</span><span>Arduino</span><span>MQTT</span><span>BLE</span><span>ESP-NOW</span><span>openHAB</span><span>Klipper</span><span>Custom PCBs</span></p>
+    <div class="grid iot-grid">
+      <a class="card link" href="https://github.com/vtoxi/aquasync" target="_blank" rel="noopener noreferrer">
+        <span class="pulse" aria-hidden="true"></span>
+        <span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-drop"/></svg></span><h3>AquaSync</h3>
+        <p>ESP32 water tank monitor with pump automation: filtered ultrasonic sensing, hysteresis control, a dry-run safety cutoff, MQTT, an OLED with a manual button, and over-the-air updates. Now being shaped into a product for homes in Pakistan, with PCBs I mill on a CNC.</p>
+        <span class="tag">ESP32 · MQTT · PCB</span>
+      </a>
+      <a class="card link" href="https://github.com/vtoxi/Smart-Water-Level-Monitor" target="_blank" rel="noopener noreferrer">
+        <span class="pulse" aria-hidden="true"></span>
+        <span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-drop"/></svg></span><h3>Smart Water Level Monitor</h3>
+        <p>Single or dual tank modes, web configuration, MQTT and BLE, with automatic pump control.</p>
+        <span class="tag">ESP32 · BLE</span>
+      </a>
+      <a class="card link" href="https://github.com/vtoxi/esp32-cam-dashcam" target="_blank" rel="noopener noreferrer">
+        <span class="pulse" aria-hidden="true"></span>
+        <span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-camera"/></svg></span><h3>CarSentinel</h3>
+        <p>A distributed ESP32 vehicle dashcam, security and telemetry platform.</p>
+        <span class="tag">ESP32-CAM</span>
+      </a>
+      <a class="card link" href="https://github.com/vtoxi/layout-map" target="_blank" rel="noopener noreferrer">
+        <span class="pulse" aria-hidden="true"></span>
+        <span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-map"/></svg></span><h3>layout-map</h3>
+        <p>A floor-plan CAD editor with a 3D walkthrough that syncs devices with openHAB, deployed on a Raspberry Pi.</p>
+        <span class="tag">Raspberry Pi · openHAB</span>
+      </a>
+      <div class="card">
+        <span class="pulse" aria-hidden="true"></span>
+        <span class="ibox"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-printer"/></svg></span><h3>Klipper 3D printing</h3>
+        <p>An Artillery Hornet 3D printer upgraded to run Klipper and Mainsail from a Raspberry Pi 3B+.</p>
+        <span class="tag">Raspberry Pi · Klipper</span>
+      </div>
+    </div>
+
+    <div class="card sim" id="sim">
+      <div class="sim-head"><h3><svg class="ico title-ico" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-drop"/></svg>Try it: AquaSync in your browser</h3><span class="tag">Simulation</span></div>
+      <div class="sim-body">
+        <div class="tank-wrap">
+          <svg class="tank" viewBox="0 0 200 250" role="img" aria-label="Water tank level">
+            <defs><clipPath id="tankClip"><rect x="30" y="20" width="140" height="200" rx="14"/></clipPath>
+            <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs>
+            <rect x="30" y="20" width="140" height="200" rx="14" fill="#0b1226" stroke="#2a3a72" stroke-width="3"/>
+            <g clip-path="url(#tankClip)"><g id="sim-water" transform="translate(0,120)"><path class="wave" d="M-200 8 Q-175 -2 -150 8 T-100 8 T-50 8 T0 8 T50 8 T100 8 T150 8 T200 8 T250 8 T300 8 V260 H-200z" fill="url(#wg)" opacity=".92"/></g></g>
+            <line x1="30" y1="62" x2="170" y2="62" stroke="#14b8a6" stroke-dasharray="4 4" opacity=".7"/><text x="174" y="65" fill="#5eead4" font-size="9">stop</text>
+            <line x1="30" y1="176" x2="170" y2="176" stroke="#f59e0b" stroke-dasharray="4 4" opacity=".7"/><text x="174" y="179" fill="#fbbf24" font-size="9">start</text>
+            <text id="sim-pct" x="100" y="128" text-anchor="middle" fill="#fff" font-size="30" font-weight="700">50%</text>
+          </svg>
+        </div>
+        <div class="sim-panel">
+          <div class="sim-row"><span>Pump</span><span class="led" id="sim-led"></span><b id="sim-pump">OFF</b></div>
+          <div class="sim-row"><span>Mode</span>
+            <div class="seg" role="group" aria-label="Pump mode"><button type="button" class="on" data-mode="auto">Auto</button><button type="button" data-mode="on">On</button><button type="button" data-mode="off">Off</button></div>
+          </div>
+          <div class="sim-row"><span>Dry well</span><label class="switch"><input type="checkbox" id="sim-dry"><i></i></label><small>Pump runs but the tank never fills</small></div>
+          <div class="sim-actions"><button type="button" class="btn btn-small" id="sim-use">Use water</button><button type="button" class="btn btn-small btn-ghost" id="sim-reset">Reset fault</button></div>
+          <ul class="log" id="sim-log" aria-live="polite"></ul>
+        </div>
+      </div>
+      <p class="note">A simplified model of AquaSync's logic: separate start and stop levels so the pump does not chatter, and a safety cutoff when it runs too long without filling. Thresholds here are for the demo.</p>
+    </div>
+    <div class="cta center">
+      <a class="btn" href="mailto:faisalshafi69@gmail.com?subject=IoT%20project%20inquiry">Have a device in mind?</a>
     </div>
   </div>
 </section>
@@ -226,16 +392,10 @@
     <h2>Let's work together</h2>
     <p class="lead">Need an architect, a technical lead, or a team to build something? Send a short note about what you're making.</p>
     <div class="cta center">
-      <a class="btn" href="mailto:faisalshafi69@gmail.com?subject=Project%20inquiry%20from%20your%20portfolio">Hire me</a>
-      <a class="btn btn-coffee" href="https://buymeacoffee.com/faisalshafi" rel="noopener">Buy me a coffee</a>
+      <a class="btn" href="mailto:faisalshafi69@gmail.com?subject=Project%20inquiry%20from%20your%20portfolio"><svg class="ico mini" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-briefcase"/></svg>Hire me</a>
+      <a class="btn btn-coffee" href="https://buymeacoffee.com/faisalshafi" target="_blank" rel="noopener noreferrer"><svg class="ico mini dark" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-coffee"/></svg>Buy me a coffee</a>
     </div>
-    <p class="links">
-      <a href="mailto:faisalshafi69@gmail.com">faisalshafi69@gmail.com</a> ·
-      <a href="https://linkedin.com/in/faisalshafi11" rel="noopener">LinkedIn</a> ·
-      <a href="https://github.com/vtoxi" rel="noopener">GitHub</a> ·
-      <a href="https://stackoverflow.com/users/2731312" rel="noopener">Stack Overflow</a> ·
-      <a href="https://medium.com/@faisalshafi69" rel="noopener">Medium</a>
-    </p>
+    <p class="socials"><a class="soc" href="mailto:faisalshafi69@gmail.com"><svg class="ico mini" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-mail"/></svg>Email</a><a class="soc" href="https://linkedin.com/in/faisalshafi11" target="_blank" rel="noopener noreferrer"><svg class="ico mini" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-in"/></svg>LinkedIn</a><a class="soc" href="https://github.com/vtoxi" target="_blank" rel="noopener noreferrer"><img src="https://cdn.simpleicons.org/github/ffffff" alt="" width="18" height="18" loading="lazy" onerror="this.remove()">GitHub</a><a class="soc" href="https://stackoverflow.com/users/2731312" target="_blank" rel="noopener noreferrer"><img src="https://cdn.simpleicons.org/stackoverflow/ffffff" alt="" width="18" height="18" loading="lazy" onerror="this.remove()">Stack Overflow</a><a class="soc" href="https://medium.com/@faisalshafi69" target="_blank" rel="noopener noreferrer"><img src="https://cdn.simpleicons.org/medium/ffffff" alt="" width="18" height="18" loading="lazy" onerror="this.remove()">Medium</a></p>
   </div>
 </section>
 
@@ -243,5 +403,8 @@
 
 <footer class="foot"><div class="wrap">© <span id="year">2026</span> Faisal Shafi · VTOXI · Islamabad, Pakistan</div></footer>
 <script src="assets/main.js" defer></script>
+<script src="assets/skills.js" defer></script>
+<script src="assets/play.js" defer></script>
+<script type="module" src="assets/timeline3d.js"></script>
 </body>
 </html>
